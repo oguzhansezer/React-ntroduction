@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {ListGroup} from 'react-bootstrap'
 import FoodMenuItem from './FoodMenuItem'
+import {Col,Row} from 'react-bootstrap'
  class FoodMenu extends Component {
     render() {
         const {foodList} = this.props;
@@ -24,10 +25,13 @@ import FoodMenuItem from './FoodMenuItem'
         })
 
         return (  
-            <ListGroup>
-            <ListGroup.Item as="li" active>Yemek listesi </ListGroup.Item>
-                {FoodMenuItems}
-            </ListGroup>
+            <div>
+            <div as="li" active>Yemek listesi </div>
+            
+            {FoodMenuItems}
+            
+               
+            </div>
         )
     }
 }

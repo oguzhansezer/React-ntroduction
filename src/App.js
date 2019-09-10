@@ -3,7 +3,6 @@ import FoodMenu from './components/FoodMenu'
 import Basket from './components/Basket'
 import React, { Component } from 'react'
 import {Row,Col} from 'react-bootstrap'
-import BasketRedux from './components/BasketRedux'
 class App extends Component {
   state = { 
     basket: [], 
@@ -11,23 +10,29 @@ class App extends Component {
       {
         id : 1,
         price : 10,
-        name : "yemek1",
+        name : "Americano",
       },
       {
         id : 2,
         price : 15,
-        name : "yemek2"
+        name : "water"
       },
       {
         id : 3,
         price : 5,
-        name : "yemek3"
+        name : "cake"
        
       },
       {
         id : 4,
         price : 18,
-        name : "yemek4"
+        name : "ice cream"
+       
+      },
+      {
+        id : 5,
+        price : 33,
+        name : "pizza"
        
       }
     ],  
@@ -110,7 +115,12 @@ onTodoChange=(value,id)=>{
     const {basket, foodList} = this.state;
     
     return (
-      <div>  
+      <div>   
+        <div className="header">
+        <a href="#HomePage">Ana sayfa</a>
+          
+        </div>
+       <div className="restaurantWrapper">  
         <Row> 
           <Col>
           <Basket  deleteItem={this.deleteItem}  basket={basket} CounterMethod={this.CounterMethod} onTodoChange={this.onTodoChange}  />
@@ -119,11 +129,9 @@ onTodoChange=(value,id)=>{
          <FoodMenu deleteItem={this.deleteItem} IncrementFoodList={this.IncrementFoodList} onTodoChange={this.onTodoChange} CounterMethod={this.CounterMethod} basket={basket} foodList={foodList}/>
          </Col>
         </Row>
-        <Row> 
+        </div> 
 
-        <BasketRedux />
-        </Row>
-        
+        <div> </div>
       </div>
     )
   }
