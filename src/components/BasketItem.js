@@ -23,14 +23,31 @@ OnonTodoChange=(e)=>{
 render() {
     return (    
     <div key={this.props.itemKey}>
-            <ListGroup.Item> 
-                <i onClick = {(e)=> this.handleDeleteItem( this.props.itemKey)} className="far fa-trash-alt"></i>  
-                { this.props.itemName }  
+                <div className="basketItem"> 
+                <tr>
+                <td>
+                <div className="basketImg">
+                <img src={this.props.logo}/>    
+                 </div> 
+                </td>
+                <td>
+                <div className="basketName">
+                <span > { this.props.itemName }  </span> 
+                </div>
+                </td>
+                <td>
+                <div className="basketQuantity"> 
                 <i onClick = {(e)=> this.onCounterMethodMinus(this.props.itemKey,'delete')} className="far fa-minus-square"></i> 
                 <input type="number"  onChange={e => this.OnonTodoChange(e.target.value,this.props.itemKey)} min="1"  value={this.props.foodCounter} className="inputdeneme" rows="1" ></input> 
                 <i onClick = {(e)=> this.onCounterMethodPlus(this.props.itemKey,'addLeft')}  className="fas fa-plus"></i>   
-                {( this.props.itemPrice)*this.props.foodCounter} TL   
-        </ListGroup.Item>
+                </div> 
+                </td>
+                </tr>
+                <tr>  
+                <div class="totalPrice"> {( this.props.itemPrice)*this.props.foodCounter} T L </div>    
+                </tr>
+                </div>
+                <div className="deleteItem"> <i onClick = {(e)=> this.handleDeleteItem( this.props.itemKey)} className="far fa-trash-alt"></i>   </div>
     </div>        
     )
 }

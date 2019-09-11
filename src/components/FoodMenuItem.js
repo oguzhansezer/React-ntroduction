@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {ListGroup} from 'react-bootstrap'
 import { connect } from 'react-redux';
 import './components.css';
-import logo from '../img/americano.jpg'
+import {Row,Col} from 'react-bootstrap'
  class FoodMenuItem extends Component {
     OnIncrementFoodList=(e)=>{
         const {itemKey,IncrementFoodList}=this.props
@@ -18,14 +18,24 @@ import logo from '../img/americano.jpg'
         IncrementFoodList(e,itemKey)
     }
 
-
+  
 
     render() {
         return (
             <div className="foodCard" >
-            <img src={logo}/> 
+            <div className="boxImg"> 
+            <img src={this.props.logo}/>
+            </div>
+            <div className="boxContent">
+             <h6>{this.props.itemDescription}</h6> 
+
+            </div>
             <div className="foodContainer"> 
-            <input type="number"  onChange={e => this.OnIncrementFoodList(e.target.value,this.props.itemKey)} min="1" defaultValue="1"    className="inputdeneme" rows="1" ></input>   <i  id={this.props.itemKey} onClick = {(e)=> this.OnCounterMethod(this.props.itemKey,'addRight')}  className="far fa-plus-square"></i> {this.props.itemName}  <br/> <h3 className="price"> {this.props.itemPrice} TL </h3>  </div> 
+            <span>{this.props.itemName} </span>
+            <input type="number"  onChange={e => this.OnIncrementFoodList(e.target.value,this.props.itemKey)} min="1" defaultValue="1"    className="inputdeneme" rows="1" ></input>
+            <i  id={this.props.itemKey} onClick = {(e)=> this.OnCounterMethod(this.props.itemKey,'addRight')}  className="far fa-plus-square"></i><br/> 
+            <h5 className="price"> {this.props.itemPrice} ₺ </h5> 
+            </div> 
             </div>
            
             

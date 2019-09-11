@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {ListGroup} from 'react-bootstrap'
 import BasketItem from './BasketItem'
+import logo from '../img/empty.png'
 class Basket extends Component {
     priceCalc=()=>{
         const {basket}=this.props
@@ -8,15 +9,26 @@ class Basket extends Component {
         basket.forEach(function(element){
           totalPrice += ((element.count )*(element.price));
         });
-        return totalPrice;
+        if(totalPrice==0){
+        return  <div className="emptyBasket"> 
+                <div className="emptyPlate"> 
+                <img src={logo}/>
+                </div>
+                <h5> Sepetiniz boş  </h5> 
+                <p>Bir yemek seçerek başlayabilirsiniz.</p>
+                </div>      
+        }else {
+         return <div className="totalPriceBox">Sipariş ücreti {totalPrice}TL </div>  
+        }
+        
         }
       
     render() {
         const {basket} = this.props;
         return (
             <div>
-                <ListGroup>
-                <ListGroup.Item as="li" active>Sepetim </ListGroup.Item>
+              
+                <div className="basketHeader" > <h4> <i class="fas fa-shopping-basket"></i> Sepetim </h4></div>
                 {
                   basket.map(item => {
                     return(
@@ -29,16 +41,21 @@ class Basket extends Component {
                      itemKey={item.id}
                      itemPrice={item.price}
                      itemName={item.name}
+                     logo={item.logo}
                  />
                     </div>
                     )
                 } )
                 }
+
                
                 {
-                <ListGroup.Item variant="danger">Sipariş ücreti {this.priceCalc()}TL </ListGroup.Item>     
+                   
+                
+                <div>{ this.priceCalc() }   </div>    
+                
                  }
-                </ListGroup>
+                
                
                
             </div>

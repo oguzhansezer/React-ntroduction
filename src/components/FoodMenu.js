@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {ListGroup} from 'react-bootstrap'
 import FoodMenuItem from './FoodMenuItem'
 import {Col,Row} from 'react-bootstrap'
+import './components.css';
  class FoodMenu extends Component {
     render() {
         const {foodList} = this.props;
@@ -11,7 +12,7 @@ import {Col,Row} from 'react-bootstrap'
                 item.rightCount = 1;  
             }  
             return (
-                <div key={item.id}>
+                <div key={item.id} className="foodBox">
                 <FoodMenuItem 
                         IncrementFoodList={this.props.IncrementFoodList}
                         CounterMethod={this.props.CounterMethod}
@@ -19,16 +20,24 @@ import {Col,Row} from 'react-bootstrap'
                         itemKey={item.id}
                         itemPrice={item.price}
                         itemName={item.name}
+                        itemDescription={item.description}
+                        logo={item.logo}
                 />
                 </div>
             )
         })
 
         return (  
-            <div>
-            <div as="li" active>Yemek listesi </div>
+            <div class="blokItem">
+            <div as="li" className="restListTitles">
+            <h4> <i class="fas fa-cheese"></i> Yemek listesi </h4> 
+            </div>
             
-            {FoodMenuItems}
+           
+          
+           <Row> 
+           {FoodMenuItems}
+           </Row>
             
                
             </div>
